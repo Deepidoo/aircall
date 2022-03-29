@@ -18,5 +18,12 @@ module Aircall
       get(construct_request_with_arguments("/contacts/search", binding))
     end
 
+    def create(args)
+      post("/contacts", args)
+    end
+
+    def update(id, args)
+      put("/contacts/#{id}", args)
+    end
   end
 end

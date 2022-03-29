@@ -33,6 +33,28 @@ module Aircall
       parse(response)
     end
 
+    def post(path, body)
+      url = "https://api.aircall.io/v1#{path}"
+      response = HTTParty.post(
+          url,
+          basic_auth: { username: aircall.id, password: aircall.token },
+          body: body
+      )
+      
+      parse(response)
+    end
+
+    def put(path, body)
+      url = "https://api.aircall.io/v1#{path}"
+      response = HTTParty.post(
+          url,
+          basic_auth: { username: aircall.id, password: aircall.token },
+          body: body
+      )
+      
+      parse(response)
+    end
+
     def get_method_arguments(ext_binding)
       raise ArgumentError, "Binding expected, #{ext_binding.class.name} given" unless ext_binding.is_a?(Binding)
       method_name = ext_binding.eval("__method__")
